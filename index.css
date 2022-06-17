@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+
+body {
+  font-family: "Red Hat Text";
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(0, 180, 216, 1),
+    rgba(72, 202, 228, 1)
+  );
+}
+.main {
+}
+.hide {
+  background-color: rgba(173, 232, 244, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.welcome {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(0, 150, 199, 1),
+    rgba(2, 62, 138, 1)
+  );
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  color: rgb(202, 240, 248);
+  padding: 5vh;
+  border-radius: 10vh;
+  text-align: center;
+  display: none;
+  box-shadow: 0px 4px 8px rgba(2, 62, 138, 1);
+}
+.button-Ok {
+  font-size: xx-large;
+  border-radius: 2vh;
+  background-color: rgba(173, 232, 244);
+  color: rgb(2, 62, 138);
+  padding: 3vh;
+  margin: 5vh;
+  box-shadow: 0px 4px 2px rgba(72, 202, 228, 1);
+}
+.button-Ok h2,
+h3,
+h4 {
+  padding: 1vh;
+}
+.welcome-icon {
+  width: 40vh;
+  padding: 5vh;
+}
