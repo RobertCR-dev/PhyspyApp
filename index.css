@@ -27,33 +27,36 @@ body {
   display: block;
 }
 .welcome {
+  padding: 3vh;
   background-image: linear-gradient(
     to right bottom,
     rgba(0, 150, 199, 1),
     rgba(2, 62, 138, 1)
   );
+  animation: moveInDown 1s ease-out;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: large;
   color: rgb(202, 240, 248);
-  padding: 5vh;
   border-radius: 10vh;
   text-align: center;
   display: block;
   box-shadow: 0px 4px 8px rgba(2, 62, 138, 1);
+  line-height: 300%;
 }
 .button-Ok {
   font-size: xx-large;
   border-radius: 2vh;
-  background-color: rgba(173, 232, 244);
+  background-color: rgba(0, 180, 216);
   color: rgb(2, 62, 138);
   padding: 3vh;
   margin: 5vh;
-  box-shadow: 0px 4px 2px rgba(72, 202, 228, 1);
+  transition: 2s;
+  box-shadow: 0px 4px 2px rgba(3, 4, 94, 1);
 }
-.button-Ok h2,
+h2,
 h3,
 h4 {
   padding: 1vh;
@@ -74,4 +77,36 @@ h4 {
   top: 1%;
   left: 1%;
   border-radius: 2%;
+}
+.button-Ok {
+  font-size: xx-large;
+  border-radius: 2vh;
+  background-color: rgba(0, 180, 216);
+  color: rgb(2, 62, 138);
+  padding: 3vh;
+  margin: 5vh;
+  transition: 2s;
+  box-shadow: 0px 4px 2px rgba(3, 4, 94, 1);
+}
+.button-ok:hover {
+  transform: translateY(-5vh);
+  box-shadow: 0px 10px 2px rgba(3, 4, 94, 1);
+  transition: 1s;
+  background-color: rgb(144, 224, 239);
+}
+.button-ok:active {
+  transform: translateY(-3vh);
+  box-shadow: 0px 5px 2px rgba(3, 4, 94, 1);
+  transition: 0.5s;
+  background-color: rgb(202, 240, 248);
+}
+@keyfr @keyframes moveInDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
