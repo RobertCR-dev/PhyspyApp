@@ -1,0 +1,11 @@
+.background-blur {
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(var(--color-8), 0.7);
+
+  %_status {
+    display: none;
+  }
+}

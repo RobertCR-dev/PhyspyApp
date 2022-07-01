@@ -7,21 +7,30 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="background"></div>
-    <div class="white-container"></div>
-    <div class="hide"></div>
-    <div class="welcome">
-      <img class="welcome-icon" src="./Images/massage.png" />
-      <h2 class="h2-welcome">This is Physpy</h2>
-      <h3>The app that helps physiotherapists.</h3>
-      <h4>
-        It uses your local storage, thus any deleted file may effect the
-        registry.
-      </h4>
-      <button class="button-ok">OK!</button>
+    <div class="container">
+      <header class="header"></header>
+      <div class="pattients"></div>
+      <div class="info"></div>
+    </div>
+    <!-- <div class="background-blur background-blur_status"></div> -->
+    <div class="welcome welcome_status">
+      <div class="welcome_container">
+        <div class="welcome_image">
+          <img class="welcome_icon" src="./img/massage.png" />
+        </div>
+        <div class="welcome_text">
+          <h2 class="h2-welcome">This is Physpy</h2>
+          <h3>The app that helps physiotherapists.</h3>
+          <h4>
+            It uses your local storage, thus <br />any deleted file may effect
+            the registry.
+          </h4>
+        </div>
+      </div>
+      <button class="welcome_button">OK!</button>
     </div>
   </body>
 </html>
