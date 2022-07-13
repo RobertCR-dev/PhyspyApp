@@ -1,0 +1,67 @@
+.header {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--color-4), 0.2),
+    rgba(var(--color-7), 0.2)
+  );
+
+  &_add {
+    height: 50px;
+  }
+
+  box-shadow: 0px 5px 2px rgb(var(--color-9));
+  border-radius: 1rem;
+  margin: 5px;
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  display: flex;
+  padding: 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+
+  &_options {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_icon {
+    height: 80%;
+  }
+
+  &_search {
+    background-color: rgb(var(--color-1));
+    border-radius: 15px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    &_button {
+      border: none;
+      background-color: transparent;
+    }
+
+    &_input {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(var(--color-9), 0.8);
+      text-align: center;
+      width: 90%;
+      height: 40px;
+      border: none;
+      background: none;
+
+      &::placeholder {
+        color: rgb(var(--color-8));
+        opacity: 0.5;
+      }
+    }
+
+    &_icon {
+      padding: 0px 10px;
+      height: 30px;
+    }
+  }
+}

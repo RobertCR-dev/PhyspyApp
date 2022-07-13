@@ -1,11 +1,11 @@
 .background-blur {
   display: block;
-  position: fixed;
+  position: absolute;
   height: 100%;
   width: 100%;
   background-color: rgba(var(--color-8), 0.7);
-
-  %_status {
+  backdrop-filter: blur(4px);
+  &_status-hidden {
     display: none;
   }
 }

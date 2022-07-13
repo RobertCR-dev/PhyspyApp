@@ -1,0 +1,25 @@
+.info {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--color-4), 0.3),
+    rgba(var(--color-8), 0.3)
+  );
+  border-radius: 1rem;
+  box-shadow: 0px 5px 2px rgb(var(--color-9));
+  margin: 5px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: flex;
+
+  &_data {
+    height: 100%;
+    width: 50%;
+    padding: 20px;
+    border-right: double rgb(var(--color-8));
+  }
+  &_images {
+    height: 100%;
+    width: 50%;
+    padding: 20px;
+  }
+}

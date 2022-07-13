@@ -27,7 +27,19 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: rgb(var(--color-8));
+}
+button {
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input:focus,
+textarea:focus {
+  outline: solid rgb(var(--color-9));
 }
 
 ::selection {

@@ -1,0 +1,10 @@
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    rgb(var(--color-8)),
+    rgb(var(--color-2))
+  );
+}

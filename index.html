@@ -4,25 +4,108 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,500;1,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <div class="background"></div>
     <div class="container">
-      <header class="header"></header>
-      <div class="pattients"></div>
-      <div class="info"></div>
+      <header class="header">
+        <img src="img/massage.png" alt="" class="header_icon" />
+        <div class="header_options">
+          <button>
+            <img src="img/add-user.png" alt="" class="header_add" />
+          </button>
+          <form class="header_search">
+            <input
+              type="text"
+              name="patientSearch"
+              placeholder="Look for a patient"
+              class="header_search_input"
+            />
+            <label for="patientSearch"> </label>
+            <button class="header_search_button">
+              <img
+                src="img/search.png"
+                alt="SearchIcon"
+                class="header_search_icon"
+                id="search"
+              />
+            </button>
+          </form>
+        </div>
+      </header>
+      <div class="pattients">
+        <ul class="pattients_result">
+          <li class="pattients_result_item">
+            <img
+              class="pattients_image"
+              src="img/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg"
+              alt=""
+            />
+            <div class="pattients_name">Luis Alejandro</div>
+          </li>
+          <li class="pattients_result_item pattients_result_item_selected">
+            <img
+              class="pattients_image"
+              src="img/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg"
+              alt=""
+            />
+            <div class="pattients_name">Luis Alejandro</div>
+          </li>
+          <li class="pattients_result_item">
+            <img
+              class="pattients_image"
+              src="img/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg"
+              alt=""
+            />
+            <div class="pattients_name">Luis Alejandro</div>
+          </li>
+          <li class="pattients_result_item"></li>
+          <li class="pattients_result_item"></li>
+          <li class="pattients_result_item"></li>
+        </ul>
+        <div class="pattients_navigation">
+          <button>
+            <img class="pattients_arrow" src="img/log-in.png" alt="" />
+          </button>
+          <div class="pattients_pages">
+            <button class="pattients_pages_button"></button>
+            <button class="pattients_pages_button"></button>
+            <button
+              class="pattients_pages_button pattients_pages_button_selected"
+            ></button>
+            <button class="pattients_pages_button"></button>
+          </div>
+          <button>
+            <img class="pattients_arrow" src="img/log-out.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="info">
+        <div class="info_data">
+          <div class="info_data_name"></div>
+          <div class="info_data_text"></div>
+        </div>
+        <div class="info_images">
+          <img class="info_upload"" src="" alt="">
+          <div class="info_images_displayed"></div>
+          <div class="info_images_navigation">
+            <button></button>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- <div class="background-blur background-blur_status"></div> -->
-    <div class="welcome welcome_status">
+    <div class="background-blur background-blur_status-hidden"></div>
+    <div class="welcome welcome_status-hidden">
       <div class="welcome_container">
         <div class="welcome_image">
           <img class="welcome_icon" src="./img/massage.png" />
         </div>
         <div class="welcome_text">
-          <h2 class="h2-welcome">This is Physpy</h2>
+          <h1>Physpy</h1>
           <h3>The app that helps physiotherapists.</h3>
           <h4>
             It uses your local storage, thus <br />any deleted file may effect
@@ -31,6 +114,43 @@
         </div>
       </div>
       <button class="welcome_button">OK!</button>
+    </div>
+    <div class="form">
+      <form class="form_grid">
+        <label for="pattient" class="form_label">Pattient </label
+        ><input id="pattient" type="text" class="form_input" />
+
+        <div class="form_sex">
+          <label for="male" class="form_label">Male</label>
+          <input
+            type="radio"
+            id="male"
+            class="form_input"
+            value="male"
+            name="sex"
+          />
+          <label for="female" class="form_label">Female</label>
+          <input
+            type="radio"
+            id="female"
+            class="form_input"
+            value="female"
+            name="sex"
+          />
+        </div>
+        <label for="number" class="form_label">Phone Number</label
+        ><input id="number" class="form_input" type="text" />
+        <div class="form_description">
+          <label for="description" class="form_label">Description</label
+          ><textarea
+            id="description"
+            class="form_input"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <button class="form_submit">Save</button>
+      </form>
     </div>
   </body>
 </html>
