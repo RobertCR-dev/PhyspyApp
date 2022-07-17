@@ -8,6 +8,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./js/controller.js" type="module"></script>
   </head>
   <body>
     <div class="background"></div>
@@ -98,8 +99,8 @@
         </div>
       </div>
     </div>
-    <div class="background-blur background-blur_status-hidden"></div>
-    <div class="welcome welcome_status-hidden">
+    <div class="background-blur"></div>
+    <div class="welcome">
       <div class="welcome_container">
         <div class="welcome_image">
           <img class="welcome_icon" src="./img/massage.png" />
@@ -113,13 +114,20 @@
           </h4>
         </div>
       </div>
-      <button class="welcome_button">OK!</button>
+      <button class="welcome_button button-popUp">OK!</button>
     </div>
-    <div class="form">
+    <div class="form hide">
       <form class="form_grid">
-        <label for="pattient" class="form_label">Pattient </label
-        ><input id="pattient" type="text" class="form_input" />
+        <button class="form_cancel button-popUp">Cancel</button>
+        <div class="form_pattient">
+          <label for="pattient" class="form_label">Pattient </label
+          ><input id="pattient" type="text" class="form_input" />
+        </div>
 
+        <div class="form_phone">
+          <label for="number" class="form_label">Phone Number</label
+          ><input id="number" class="form_input" type="text" />
+        </div>
         <div class="form_sex">
           <label for="male" class="form_label">Male</label>
           <input
@@ -138,8 +146,7 @@
             name="sex"
           />
         </div>
-        <label for="number" class="form_label">Phone Number</label
-        ><input id="number" class="form_input" type="text" />
+        <div class="form_separator"></div>
         <div class="form_description">
           <label for="description" class="form_label">Description</label
           ><textarea
@@ -149,7 +156,7 @@
             rows="10"
           ></textarea>
         </div>
-        <button class="form_submit">Save</button>
+        <button class="form_submit button-popUp">Save</button>
       </form>
     </div>
   </body>
