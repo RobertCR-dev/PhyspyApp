@@ -14,7 +14,6 @@ class popUp extends View {
       this.fade(this.welcome, true),
       this.fade(this.backgroundBlur, true),
     ]);
-
     this.welcome.classList.toggle("hide");
     this.backgroundBlur.classList.toggle("hide");
   }

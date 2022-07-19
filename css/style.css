@@ -229,6 +229,7 @@ body {
 }
 
 .form {
+  opacity: 0;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -267,7 +268,7 @@ body {
 .form_phone {
   grid-area: 3/1/4/2;
 }
-.form_sex {
+.form_gender {
   width: 100%;
   grid-area: 4/1/5/2;
   display: flex;
@@ -337,7 +338,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.header_add {
+.header_add_image {
   height: 50px;
 }
 .header_options {

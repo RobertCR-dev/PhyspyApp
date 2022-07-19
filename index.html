@@ -16,8 +16,8 @@
       <header class="header">
         <img src="img/massage.png" alt="" class="header_icon" />
         <div class="header_options">
-          <button>
-            <img src="img/add-user.png" alt="" class="header_add" />
+          <button class="header_add_button">
+            <img src="img/add-user.png" alt="" class="header_add_image" />
           </button>
           <form class="header_search">
             <input
@@ -114,11 +114,11 @@
           </h4>
         </div>
       </div>
-      <button class="welcome_button button-popUp">OK!</button>
+      <button class="welcome_button button-popUp" type="button">OK!</button>
     </div>
     <div class="form hide">
+      <button class="form_cancel button-popUp">Cancel</button>
       <form class="form_grid">
-        <button class="form_cancel button-popUp">Cancel</button>
         <div class="form_pattient">
           <label for="pattient" class="form_label">Pattient </label
           ><input id="pattient" type="text" class="form_input" />
@@ -128,14 +128,14 @@
           <label for="number" class="form_label">Phone Number</label
           ><input id="number" class="form_input" type="text" />
         </div>
-        <div class="form_sex">
+        <div class="form_gender">
           <label for="male" class="form_label">Male</label>
           <input
             type="radio"
             id="male"
             class="form_input"
             value="male"
-            name="sex"
+            name="gender"
           />
           <label for="female" class="form_label">Female</label>
           <input
