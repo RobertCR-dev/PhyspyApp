@@ -1,33 +1,38 @@
-export const pattients = JSON.parse(localStorage.getItem("pattients")) ?? [];
+const pattients = JSON.parse(localStorage.getItem("pattients")) ?? [];
+
+export const state = {
+  allPattients: pattients,
+  pattient: this.pattients,
+  active: "",
+  pages: "",
+};
 
 export const generatePattient = function (
-  firstName,
-  number,
+  name,
+  date,
   gender,
+  number,
+  email,
+  reason,
   description,
-  imgSrc
+  randomSrc
 ) {
   pattients.unshift({
-    name: firstName,
-    number: number,
+    name: name,
+    date: date,
     gender: gender,
+    number: number,
+    email: email,
+    reason: reason,
     description: description,
-    imgSrc: imgSrc,
+    imgSrc: randomSrc,
   });
-  update();
+  updateLocal();
 };
 
-const update = function () {
+const updateLocal = function () {
   localStorage.setItem("pattients", JSON.stringify(pattients));
 };
-
-// const loadPattients = async function () {
-//   return JSON.parse(localStorage.getItem("pattients"));
-// };
-
-// const savePattients = async function (pattients) {
-//   return localStorage.setItem("pattients", JSON.stringify(pattients));
-// };
 
 export const seedPattients = function (num) {
   const firstNames = [
@@ -89,30 +94,41 @@ export const seedPattients = function (num) {
   ];
 
   for (let i = 0; i < num; i++) {
-    let randomFirstName = Math.floor(Math.random() * 20 + 1);
-    let randomLastName = Math.floor(Math.random() * 20 + 1);
+    let randomFirstName = Math.floor(Math.random() * 19 + 1);
+    let randomLastName = Math.floor(Math.random() * 19 + 1);
     let name = firstNames[randomFirstName] + lastNames[randomLastName];
     let description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     let randomSrc;
+    let date = new Date(
+      Math.floor(
+        Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
+          10 * 365 * 24 * 60 * 60 * 1000
+      )
+    );
     let gender;
+    let reason = "Lorem ipsum";
+    let email = +randomFirstName + "@mail.com";
     let number = "+1" + Math.floor(Math.random() * 999999999 + 1);
 
-    if (randomFirstName < 6) {
+    if (randomFirstName < 10) {
       randomSrc = imgSrc[Math.floor(Math.random() * 5 + 1)];
       gender = "male";
     }
-    if (randomFirstName >= 5) {
+    if (randomFirstName >= 10) {
       randomSrc = imgSrc[Math.floor(Math.random() * 5 + 6)];
       gender = "female";
     }
-    console.log(
-      "New pattient is: " + name,
-      number,
+
+    generatePattient(
+      name,
+      date,
       gender,
+      number,
+      email,
+      reason,
       description,
       randomSrc
     );
-    generatePattient(name, number, gender, description, randomSrc);
   }
 };

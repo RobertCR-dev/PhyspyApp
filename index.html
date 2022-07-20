@@ -87,16 +87,20 @@
       </div>
       <div class="info">
         <div class="info_data">
-          <div class="info_data_name"></div>
-          <div class="info_data_text"></div>
+          <button class="btn_edit"><img src="" alt="" /></button>
+          <button class="btn_delete"><img src="" alt="" /></button>
+          <img src="" alt="" />
+          <h3>Pattient name</h3>
+          <div>Number</div>
+          <div>Age</div>
+          <div>Gender</div>
+          <div>Phone Number</div>
+          <div>E-mail</div>
+          <div>Main Reason</div>
+          <div>Description</div>
+          <button class="btn_generate-Date"><img src="" alt="" /></button>
         </div>
-        <div class="info_images">
-          <img class="info_upload"" src="" alt="">
-          <div class="info_images_displayed"></div>
-          <div class="info_images_navigation">
-            <button></button>
-          </div>
-        </div>
+        <div class="info_appointment"></div>
       </div>
     </div>
     <div class="background-blur"></div>
@@ -109,8 +113,8 @@
           <h1>Physpy</h1>
           <h3>The app that helps physiotherapists.</h3>
           <h4>
-            It uses your local storage, thus <br />any deleted file may effect
-            the registry.
+            It uses your local storage, therefore <br />any deleted file may
+            effect the registry.
           </h4>
         </div>
       </div>
@@ -121,12 +125,21 @@
       <form class="form_grid">
         <div class="form_pattient">
           <label for="pattient" class="form_label">Pattient </label
-          ><input id="pattient" type="text" class="form_input" />
+          ><input
+            id="pattient"
+            type="text"
+            class="form_input"
+            name="pattient"
+          />
         </div>
-
-        <div class="form_phone">
-          <label for="number" class="form_label">Phone Number</label
-          ><input id="number" class="form_input" type="text" />
+        <div class="form_birthday">
+          <label for="birthday" class="form_label">Birthday</label
+          ><input
+            id="birthday"
+            type="date"
+            class="form_input"
+            name="birthday"
+          />
         </div>
         <div class="form_gender">
           <label for="male" class="form_label">Male</label>
@@ -143,20 +156,42 @@
             id="female"
             class="form_input"
             value="female"
-            name="sex"
+            name="gender"
           />
         </div>
-        <div class="form_separator"></div>
+        <div class="form_phone">
+          <label for="number" class="form_label">Phone Number</label
+          ><input id="number" class="form_input" type="text" name="number" />
+        </div>
+        <div class="form_email">
+          <label for="email" class="form_label">E-mail</label
+          ><input id="email" class="form_input" type="email" name="email" />
+        </div>
+
+        <div class="form_separator form_separator_1"></div>
+        <div class="form_reason">
+          <label for="reason" class="form_label">Main Reason</label
+          ><input id="reason" class="form_input" type="text" name="reason" />
+        </div>
         <div class="form_description">
           <label for="description" class="form_label">Description</label
           ><textarea
             id="description"
             class="form_input"
-            cols="30"
-            rows="10"
+            rows="20"
+            name="description"
           ></textarea>
         </div>
-        <button class="form_submit button-popUp">Save</button>
+        <div class="form_separator form_separator_2"></div>
+        <button class="form_delete button-popUp" type="submit">
+          Delete image
+        </button>
+        <div class="form_img"></div>
+        <div class="form_upload">
+          <label for="img" class="form_label">Upload a portrait image</label>
+          <input class="form_input" type="file" name="img" />
+        </div>
+        <button class="form_submit button-popUp" type="submit">Save</button>
       </form>
     </div>
   </body>
