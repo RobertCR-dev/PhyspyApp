@@ -1,8 +1,8 @@
 export default class View {
-  _parentElement;
+  parentElement;
 
-  render(data) {
-    this.parentElement.insertHTML(generateMarkUp);
+  clear() {
+    this.parentElement.innerHTML = "";
   }
 
   fade(element, out) {

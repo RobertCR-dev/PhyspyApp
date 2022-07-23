@@ -14,12 +14,82 @@
   &_data {
     height: 100%;
     width: 35%;
-    padding: 20px;
     border-right: double rgb(var(--color-8));
+    display: grid;
+    grid-template-rows: 35% 300px 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
   }
-  &_appointment {
-    height: 100%;
-    width: 65%;
-    padding: 20px;
+
+  &_figure {
+    grid-area: 1/1/2/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_border {
+    background-color: rgb(var(--color-1));
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+  }
+
+  &_pattient_image {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+  }
+
+  &_name {
+    margin-top: 10px;
+    padding: 5px;
+    color: rgb(var(--color-8));
+    background-color: rgb(var(--color-3));
+    border-radius: 10px;
+  }
+
+  &_fields {
+    grid-area: 2/1/3/4;
+    border-radius: 10px;
+    background-color: rgb(var(--color-3));
+    color: rgb(var(--color-7));
+    height: 95%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_generate {
+    grid-area: 3/1/4/2;
+  }
+
+  &_edit {
+    grid-area: 3/2/4/3;
+  }
+
+  &_remove {
+    grid-area: 3/3/4/4;
+  }
+
+  &_btn_image {
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  &_look {
+    grid-area: 1/1/4/4;
+    background: rgb(var(--color-3));
+    border-radius: 10px;
+    color: rgb(var(--color-8));
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

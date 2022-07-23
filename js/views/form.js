@@ -6,12 +6,14 @@ class form extends View {
   cancelButton = document.querySelector(".form_cancel");
   backgroundBlur = document.querySelector(".background-blur");
   openButton = document.querySelector(".header_add_button");
+  input = document.querySelector("input[type='file']");
+  display = document.querySelector(".form_img");
 
   constructor() {
     super();
-    // this.cancelForm();
     this.openForm();
     this.closeForm();
+    this.displayImage();
     // this.submitForm();
   }
 
@@ -32,6 +34,10 @@ class form extends View {
     this.cancelButton.addEventListener("click", this.hideForm.bind(this));
   }
 
+  displayImage() {
+    this.input.addEventListener("change", this.handleFiles, false);
+  }
+
   async hideForm() {
     console.log("clicked");
     await Promise.allSettled([
@@ -42,24 +48,27 @@ class form extends View {
     this.backgroundBlur.classList.toggle("hide");
   }
 
-  // async closeForm() {
-  //   await Promise.allSettled([
-  //     this.fade(this.form, true),
-  //     this.fade(this.backgroundBlur, true),
-  //   ]);
-  //   this.form.classList.toggle("hide");
-  //   this.backgroundBlur.classList.toggle("hide");
-  // }
+  handleFiles(files) {
+    console.log("changed");
+    const display = document.querySelector(".form_img");
+    const file = this.files[0];
 
-  // cancelForm() {
-  //   this.cancelButton.addEventListener("click", this.closeForm.bind(this));
-  // }
+    if (!file.type.startsWith("image/")) {
+      return;
+    }
+    const img = document.createElement("img");
+    img.classList.add("form_img_display");
+    img.file = file;
+    display.appendChild(img);
 
-  // submitForm() {
-  //   this.submitButton.addEventListener("click", function (e) {
-  //     e.preventDefault();
-  //     console.log("You clicked ", submitButton);
-  //   });
-  // }
+    const reader = new FileReader();
+    reader.onload = (function (aImg) {
+      return function (e) {
+        aImg.src = e.target.result;
+      };
+    })(img);
+    reader.readAsDataURL(file);
+  }
 }
+
 export default new form();

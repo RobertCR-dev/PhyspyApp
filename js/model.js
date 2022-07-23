@@ -1,40 +1,54 @@
-const pattients = JSON.parse(localStorage.getItem("pattients")) ?? [];
-
 export const state = {
-  allPattients: pattients,
-  pattient: this.pattients,
-  active: "",
-  pages: "",
+  activePattients: [],
+  page: 1,
+  activeID: null,
+};
+
+export const queryPattients = function (query) {
+  state.activePattients = [];
+  if (query === "") {
+    state.activePattients = [...pattients];
+    return;
+  }
+  pattients.forEach((e) => {
+    if (e.name.toLowerCase().includes(query.toLowerCase()))
+      state.activePattients.unshift(e);
+  });
 };
 
 export const generatePattient = function (
   name,
-  date,
+  birthDay,
   gender,
   number,
   email,
   reason,
   description,
-  randomSrc
+  src,
+  id,
+  createdIn
 ) {
-  pattients.unshift({
+  return {
     name: name,
-    date: date,
+    birthDay: birthDay,
     gender: gender,
     number: number,
     email: email,
     reason: reason,
     description: description,
-    imgSrc: randomSrc,
-  });
-  updateLocal();
+    imgSrc: src,
+    id: id,
+    createdIn: createdIn,
+  };
 };
 
-const updateLocal = function () {
+const updateLocal = function (pattients) {
   localStorage.setItem("pattients", JSON.stringify(pattients));
 };
 
-export const seedPattients = function (num) {
+const seedPattients = function (num) {
+  console.log("seeding random pattients");
+  const pattients = [];
   const firstNames = [
     "James",
     "Robert",
@@ -96,11 +110,11 @@ export const seedPattients = function (num) {
   for (let i = 0; i < num; i++) {
     let randomFirstName = Math.floor(Math.random() * 19 + 1);
     let randomLastName = Math.floor(Math.random() * 19 + 1);
-    let name = firstNames[randomFirstName] + lastNames[randomLastName];
+    let name = firstNames[randomFirstName] + " " + lastNames[randomLastName];
     let description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     let randomSrc;
-    let date = new Date(
+    let birthDay = new Date(
       Math.floor(
         Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
           10 * 365 * 24 * 60 * 60 * 1000
@@ -108,27 +122,39 @@ export const seedPattients = function (num) {
     );
     let gender;
     let reason = "Lorem ipsum";
-    let email = +randomFirstName + "@mail.com";
+    let email = name + "@mail.com";
     let number = "+1" + Math.floor(Math.random() * 999999999 + 1);
+    let randomID = Math.random().toString(36).substr(2, 8);
+    let createdIn = new Date();
 
     if (randomFirstName < 10) {
-      randomSrc = imgSrc[Math.floor(Math.random() * 5 + 1)];
+      randomSrc = imgSrc[Math.floor(Math.random() * 5)];
       gender = "male";
     }
     if (randomFirstName >= 10) {
-      randomSrc = imgSrc[Math.floor(Math.random() * 5 + 6)];
+      randomSrc = imgSrc[Math.floor(Math.random() * 5 + 5)];
       gender = "female";
     }
 
-    generatePattient(
-      name,
-      date,
-      gender,
-      number,
-      email,
-      reason,
-      description,
-      randomSrc
+    pattients.unshift(
+      generatePattient(
+        name,
+        birthDay,
+        gender,
+        number,
+        email,
+        reason,
+        description,
+        randomSrc,
+        randomID,
+        createdIn
+      )
     );
   }
+  updateLocal(pattients);
+  console.log(pattients);
+  return pattients;
 };
+
+export const pattients =
+  JSON.parse(localStorage.getItem("pattients")) ?? seedPattients(19);
