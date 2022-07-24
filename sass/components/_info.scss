@@ -16,7 +16,7 @@
     width: 35%;
     border-right: double rgb(var(--color-8));
     display: grid;
-    grid-template-rows: 35% 300px 50px;
+    grid-template-rows: 35% 55% 50px;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
@@ -51,16 +51,17 @@
   }
 
   &_fields {
+    padding: 10px;
     grid-area: 2/1/3/4;
     border-radius: 10px;
     background-color: rgb(var(--color-3));
     color: rgb(var(--color-7));
     height: 95%;
-    width: 90%;
+    width: 98%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    text-align: center;
   }
 
   &_generate {
@@ -91,5 +92,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  &_flex {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
   }
 }

@@ -1,9 +1,9 @@
 .container {
   position: absolute;
-  width: 94%;
-  height: 94%;
-  top: 3%;
-  left: 3%;
+  width: 98%;
+  height: 98%;
+  top: 1%;
+  left: 1%;
   background-image: linear-gradient(
     to bottom,
     rgba(var(--color-4), 0.5),
@@ -14,6 +14,6 @@
   // background-color: transparent;
 
   display: grid;
-  grid-template-columns: 2fr 9fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-columns: 2fr 11fr;
+  grid-template-rows: 60px 1fr;
 }

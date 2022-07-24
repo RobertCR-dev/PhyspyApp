@@ -49,8 +49,8 @@
           <div class="info_look">
             <h4>Look for a pattient</h4>
             <h4>or upload a pattient</h4>
-        </div>
-        <!-- <div class="info_data">
+          </div>
+          <!-- <div class="info_data">
           <figure class="info_figure">
             <div class="info_border">
               <img
@@ -77,8 +77,9 @@
             <img src="./img/agenda.png" class="info_btn_image" alt="" />
           </button>
         </div> -->
-        <div class="info_appointment"></div>
+        </div>
       </div>
+      <div class="info_appointment"></div>
     </div>
     <div class="background-blur"></div>
     <div class="welcome">
@@ -99,7 +100,7 @@
     </div>
     <div class="form hide">
       <button class="form_cancel button-popUp">Cancel</button>
-      <form class="form_grid">
+      <form class="form_grid" id="form">
         <div class="form_pattient">
           <label for="pattient" class="form_label">Pattient </label
           ><input
@@ -107,6 +108,7 @@
             type="text"
             class="form_input"
             name="pattient"
+            required
           />
         </div>
         <div class="form_birthday">
@@ -116,6 +118,7 @@
             type="date"
             class="form_input"
             name="birthday"
+            required
           />
         </div>
         <div class="form_gender">
@@ -126,6 +129,7 @@
             class="form_input"
             value="male"
             name="gender"
+            required
           />
           <label for="female" class="form_label">Female</label>
           <input
@@ -134,21 +138,40 @@
             class="form_input"
             value="female"
             name="gender"
+            required
           />
         </div>
         <div class="form_phone">
           <label for="number" class="form_label">Phone Number</label
-          ><input id="number" class="form_input" type="text" name="number" />
+          ><input
+            id="number"
+            class="form_input"
+            type="text"
+            name="number"
+            required
+          />
         </div>
         <div class="form_email">
           <label for="email" class="form_label">E-mail</label
-          ><input id="email" class="form_input" type="email" name="email" />
+          ><input
+            id="email"
+            class="form_input"
+            type="email"
+            name="email"
+            required
+          />
         </div>
 
         <div class="form_separator form_separator_1"></div>
         <div class="form_reason">
           <label for="reason" class="form_label">Main Reason</label
-          ><input id="reason" class="form_input" type="text" name="reason" />
+          ><input
+            id="reason"
+            class="form_input"
+            type="text"
+            name="reason"
+            required
+          />
         </div>
         <div class="form_description">
           <label for="description" class="form_label">Description</label
@@ -157,10 +180,11 @@
             class="form_input"
             rows="15"
             name="description"
+            required
           ></textarea>
         </div>
         <div class="form_separator form_separator_2"></div>
-        <button class="form_delete button-popUp" type="submit">
+        <button class="form_delete button-popUp" type="button">
           Delete image
         </button>
         <div class="form_img"></div>

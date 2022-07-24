@@ -1,6 +1,6 @@
 import popUp from "./views/popUp.js";
 import form from "./views/form.js";
-import result from "./views/result.js";
+// import result from "./views/result.js";
 import * as model from "./model.js";
 import header from "./views/header.js";
 import pattients from "./views/pattients.js";
@@ -10,9 +10,24 @@ import info from "./views/info.js";
 const loadPattients = function () {
   model.state.page = 1;
   model.queryPattients(header.getQuery());
-  console.log(model.state.activePattients);
   pattients.renderPattients(model.state);
   pages.renderPages(model.state);
+};
+
+const openForm = function () {
+  model.state.activeID = "";
+  location.hash = "";
+  info.clear();
+  form.displayForm();
+};
+
+const generateAppointment = function () {};
+
+const editPattient = function () {};
+
+const removePattient = function () {
+  model.remove(window.location.hash.slice(1));
+  location.hash = "";
 };
 
 const selectPattient = function (ev) {
@@ -25,6 +40,7 @@ const selectPattient = function (ev) {
       (p) => p.id === window.location.hash.slice(1)
     )
   );
+  info.selectButtons(generateAppointment, editPattient, removePattient);
 };
 
 const changePage = function (ev) {
@@ -44,9 +60,20 @@ const changePage = function (ev) {
   pages.renderPages(model.state);
 };
 
+const submitForm = function (e) {
+  e.preventDefault();
+  console.log(form.form.elements["pattient"].value);
+  if (window.location.hash.slice(1) === "") {
+  } else {
+  }
+};
+
 const init = function () {
   header.listenQueries(loadPattients);
+  form.listenOpenForm(openForm);
   pattients.listenSelectedPattient(selectPattient);
   pages.listenButtons(changePage);
+  form.listenSubmit(submitForm);
 };
+
 init();

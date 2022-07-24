@@ -18,27 +18,29 @@ export const queryPattients = function (query) {
 
 export const generatePattient = function (
   name,
-  birthDay,
   gender,
   number,
   email,
   reason,
   description,
-  src,
-  id,
-  createdIn
+  src
 ) {
   return {
     name: name,
-    birthDay: birthDay,
+    birthDay: new Date(
+      Math.floor(
+        Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
+          10 * 365 * 24 * 60 * 60 * 1000
+      )
+    ),
     gender: gender,
     number: number,
     email: email,
     reason: reason,
     description: description,
     imgSrc: src,
-    id: id,
-    createdIn: createdIn,
+    id: Math.random().toString(36).substr(2, 8),
+    createdIn: new Date(),
   };
 };
 
@@ -114,18 +116,14 @@ const seedPattients = function (num) {
     let description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     let randomSrc;
-    let birthDay = new Date(
-      Math.floor(
-        Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
-          10 * 365 * 24 * 60 * 60 * 1000
-      )
-    );
     let gender;
     let reason = "Lorem ipsum";
-    let email = name + "@mail.com";
+    let email = (
+      firstNames[randomFirstName].slice(0, 1) +
+      lastNames[randomLastName] +
+      "@mail.com"
+    ).toLowerCase();
     let number = "+1" + Math.floor(Math.random() * 999999999 + 1);
-    let randomID = Math.random().toString(36).substr(2, 8);
-    let createdIn = new Date();
 
     if (randomFirstName < 10) {
       randomSrc = imgSrc[Math.floor(Math.random() * 5)];
@@ -139,15 +137,12 @@ const seedPattients = function (num) {
     pattients.unshift(
       generatePattient(
         name,
-        birthDay,
         gender,
         number,
         email,
         reason,
         description,
-        randomSrc,
-        randomID,
-        createdIn
+        randomSrc
       )
     );
   }

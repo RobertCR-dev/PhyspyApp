@@ -1,57 +1,80 @@
 import View from "./View.js";
 
 class form extends View {
-  form = document.querySelector(".form");
+  formLayout = document.querySelector(".form");
+  form = document.querySelector(".form_grid");
   submitButton = document.querySelector(".form_submit");
   cancelButton = document.querySelector(".form_cancel");
   backgroundBlur = document.querySelector(".background-blur");
   openButton = document.querySelector(".header_add_button");
-  input = document.querySelector("input[type='file']");
+  inputImg = document.querySelector("input[type='file']");
   display = document.querySelector(".form_img");
+  deleteButton = document.querySelector(".form_delete");
 
   constructor() {
     super();
-    this.openForm();
-    this.closeForm();
+    this.listenCloseForm();
     this.displayImage();
-    // this.submitForm();
+    this.selectDelete();
   }
 
-  openForm() {
-    this.openButton.addEventListener("click", this.displayForm.bind(this));
+  listenOpenForm(f) {
+    this.openButton.addEventListener("click", f);
+  }
+
+  listenSubmit(f) {
+    this.formLayout.addEventListener("submit", f);
+  }
+
+  selectDelete() {
+    this.deleteButton.addEventListener("click", this.deleteImage);
+  }
+
+  deleteImage() {
+    this.removeImage();
+    this.form.elements["img"].value = "";
+  }
+
+  removeImage() {
+    const imageToRemove = document.querySelector(".form_img_display");
+    if (imageToRemove === null) return;
+    imageToRemove.parentNode.removeChild(imageToRemove);
   }
 
   async displayForm() {
-    this.form.classList.toggle("hide");
+    this.formLayout.classList.toggle("hide");
     this.backgroundBlur.classList.toggle("hide");
     await Promise.allSettled([
-      this.fade(this.form, false),
+      this.fade(this.formLayout, false),
       this.fade(this.backgroundBlur, false),
     ]);
   }
 
-  closeForm() {
+  listenCloseForm() {
     this.cancelButton.addEventListener("click", this.hideForm.bind(this));
   }
 
   displayImage() {
-    this.input.addEventListener("change", this.handleFiles, false);
+    this.inputImg.addEventListener(
+      "change",
+      this.handleImage.bind(this),
+      false
+    );
   }
 
   async hideForm() {
-    console.log("clicked");
     await Promise.allSettled([
-      this.fade(this.form, true),
+      this.fade(this.formLayout, true),
       this.fade(this.backgroundBlur, true),
     ]);
-    this.form.classList.toggle("hide");
+    this.formLayout.classList.toggle("hide");
     this.backgroundBlur.classList.toggle("hide");
   }
 
-  handleFiles(files) {
-    console.log("changed");
+  handleImage(files) {
+    this.removeImage();
     const display = document.querySelector(".form_img");
-    const file = this.files[0];
+    const file = this.inputImg.files[0];
 
     if (!file.type.startsWith("image/")) {
       return;
