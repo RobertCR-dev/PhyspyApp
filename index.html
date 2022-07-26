@@ -14,7 +14,10 @@
     <div class="background"></div>
     <div class="container">
       <header class="header">
-        <img src="img/massage.png" alt="" class="header_icon" />
+        <div class="header_flex">
+          <img src="img/massage.png" alt="" class="header_icon" />
+          <h1>Physpy</h1>
+        </div>
         <div class="header_options">
           <button class="header_add_button">
             <img src="img/add-user.png" alt="" class="header_add_image" />
@@ -50,36 +53,39 @@
             <h4>Look for a pattient</h4>
             <h4>or upload a pattient</h4>
           </div>
-          <!-- <div class="info_data">
-          <figure class="info_figure">
-            <div class="info_border">
-              <img
-                class="info_pattient_image"
-                src="./img/retrato-hombre-joven-expresivo-vistiendo-traje-formal_273609-6942.jpg"
-              />
-            </div>
-            <figcaption class="info_name">Roberto Camacho Rivera</figcaption>
-          </figure>
-
-          <div class="info_fields">
-            <div>Characteristics</div>
-            <div>Contact</div>
-            <div>Reason</div>
-            <div>Main Reason</div>
+        </div>
+        <div class="appointments">
+          <ul class="appointments_dates">
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el appointments_dates_el_selected">
+              23/12/1293
+            </li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+            <li class="appointments_dates_el">23/12/1293</li>
+          </ul>
+          <div class="appointments_description">
+            <div>scoliosis diagnosed</div>
           </div>
-          <button class="info_edit">
-            <img src="./img/gear.png" class="info_btn_image" alt="" />
-          </button>
-          <button class="info_remove">
-            <img src="./img/remove-user.png" class="info_btn_image" alt="" />
-          </button>
-          <button class="info_generate">
-            <img src="./img/agenda.png" class="info_btn_image" alt="" />
-          </button>
-        </div> -->
+          <div class="appointments_files">
+            <div class="appointments_files_left-arrow">&#x1F844</div>
+            <img
+               class="appointments_files_image" src="./img/diagnostico-escoliosis.jpg"
+               alt=""
+            />
+            <div class="appointments_files-right-arrow">&#x1F846</div>
+          </div>
         </div>
       </div>
-      <div class="info_appointment"></div>
     </div>
     <div class="background-blur"></div>
     <div class="welcome">
@@ -98,101 +104,106 @@
       </div>
       <button class="welcome_button button-popUp" type="button">OK!</button>
     </div>
-    <div class="form hide">
-      <button class="form_cancel button-popUp">Cancel</button>
-      <form class="form_grid" id="form">
-        <div class="form_pattient">
-          <label for="pattient" class="form_label">Pattient </label
+    <div class="form_pattient hide">
+      <button class="form_pattient_cancel button-popUp">Cancel</button>
+      <form class="form_pattient_grid" id="form">
+        <div class="form_pattient_name">
+          <label for="name" class="form_pattient_label">Name </label
           ><input
-            id="pattient"
+            id="name"
             type="text"
-            class="form_input"
-            name="pattient"
+            class="form_pattient_input"
+            name="name"
             required
           />
         </div>
-        <div class="form_birthday">
-          <label for="birthday" class="form_label">Birthday</label
+        <div class="form_pattient_birthday">
+          <label for="birthday" class="form_pattient_label">Birthday</label
           ><input
             id="birthday"
             type="date"
-            class="form_input"
+            class="form_pattient_input"
             name="birthday"
             required
           />
         </div>
-        <div class="form_gender">
+        <div class="form_pattient_gender">
           <label for="male" class="form_label">Male</label>
           <input
             type="radio"
             id="male"
-            class="form_input"
+            class="form_pattient_input"
             value="male"
             name="gender"
             required
           />
-          <label for="female" class="form_label">Female</label>
+          <label for="female" class="form_pattient_label">Female</label>
           <input
             type="radio"
             id="female"
-            class="form_input"
+            class="form_pattient_input"
             value="female"
             name="gender"
             required
           />
         </div>
-        <div class="form_phone">
-          <label for="number" class="form_label">Phone Number</label
+        <div class="form_pattient_phone">
+          <label for="number" class="form_pattient_label">Phone Number</label
           ><input
             id="number"
-            class="form_input"
+            class="form_pattient_input"
             type="text"
             name="number"
             required
           />
         </div>
-        <div class="form_email">
-          <label for="email" class="form_label">E-mail</label
+        <div class="form_pattient_email">
+          <label for="email" class="form_pattient_label">E-mail</label
           ><input
             id="email"
-            class="form_input"
+            class="form_pattient_input"
             type="email"
             name="email"
             required
           />
         </div>
 
-        <div class="form_separator form_separator_1"></div>
-        <div class="form_reason">
-          <label for="reason" class="form_label">Main Reason</label
+        <div class="form_pattient_separator form_pattient_separator_1"></div>
+        <div class="form_pattient_reason">
+          <label for="reason" class="form_pattient_label">Main Reason</label
           ><input
             id="reason"
-            class="form_input"
+            class="form_pattient_input"
             type="text"
             name="reason"
             required
           />
         </div>
-        <div class="form_description">
-          <label for="description" class="form_label">Description</label
+        <div class="form_pattient_description">
+          <label for="description" class="form_pattient_label">Description</label
           ><textarea
             id="description"
-            class="form_input"
-            rows="15"
+            class="form_pattient_input form_pattient_input_text-area"
+            rows="16"
             name="description"
             required
           ></textarea>
         </div>
-        <div class="form_separator form_separator_2"></div>
-        <button class="form_delete button-popUp" type="button">
+        <div class="form_pattient_separator form_pattient_separator_2"></div>
+        <button class="form_pattient_delete button-popUp" type="button">
           Delete image
         </button>
-        <div class="form_img"></div>
-        <div class="form_upload">
-          <label for="img" class="form_label">Upload a portrait image</label>
-          <input class="form_input" type="file" name="img" />
+        <div class="form_pattient_img"></div>
+        <div class="form_pattient_upload">
+          <label for="img" class="form_pattient_label">Upload a portrait image</label>
+          <input class="form_pattient_input" type="file" name="img" />
         </div>
-        <button class="form_submit button-popUp" type="submit">Save</button>
+        <button class="form_pattient_submit button-popUp" type="submit">Save</button>
+      </form>
+    </div>
+    <div class="form_pattient_appointment hide">
+      <form class="form_pattient_appointment_grid"action="">
+        
       </form>
     </div>
   </body>

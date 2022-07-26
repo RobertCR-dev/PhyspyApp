@@ -1,9 +1,14 @@
 .header {
   background-image: linear-gradient(
     to bottom,
-    rgba(var(--color-4), 0.2),
-    rgba(var(--color-7), 0.2)
+    rgb(var(--color-6)),
+    rgb(var(--color-7))
   );
+
+  &_flex {
+    display: flex;
+    align-items: center;
+  }
 
   &_add {
     &_image {
@@ -28,11 +33,11 @@
   }
 
   &_icon {
-    height: 80%;
+    height: 50px;
   }
 
   &_search {
-    background-color: rgb(var(--color-1));
+    background-color: rgb(var(--color-3));
     border-radius: 15px;
     width: 90%;
     display: flex;

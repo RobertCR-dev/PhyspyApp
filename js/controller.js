@@ -1,11 +1,11 @@
+import * as model from "./model.js";
 import popUp from "./views/popUp.js";
 import form from "./views/form.js";
-// import result from "./views/result.js";
-import * as model from "./model.js";
 import header from "./views/header.js";
 import pattients from "./views/pattients.js";
 import pages from "./views/pages.js";
 import info from "./views/info.js";
+import * as helpers from "./helpers.js";
 
 const loadPattients = function () {
   model.state.page = 1;
@@ -15,7 +15,6 @@ const loadPattients = function () {
 };
 
 const openForm = function () {
-  model.state.activeID = "";
   location.hash = "";
   info.clear();
   form.displayForm();
@@ -33,14 +32,7 @@ const removePattient = function () {
 const selectPattient = function (ev) {
   if (ev.target.closest(".pattients_result_item") === null) return;
 
-  model.state.activeID = ev.target.closest(".pattients_result_item").dataset.id;
-  location.hash = model.state.activeID ?? "";
-  info.renderInfo(
-    model.state.activePattients.find(
-      (p) => p.id === window.location.hash.slice(1)
-    )
-  );
-  info.selectButtons(generateAppointment, editPattient, removePattient);
+  location.hash = ev.target.closest(".pattients_result_item").dataset.id;
 };
 
 const changePage = function (ev) {
@@ -60,12 +52,40 @@ const changePage = function (ev) {
   pages.renderPages(model.state);
 };
 
-const submitForm = function (e) {
+const submitForm = async function (e) {
   e.preventDefault();
-  console.log(form.form.elements["pattient"].value);
   if (window.location.hash.slice(1) === "") {
+    const field = form.form.elements;
+    let imgSrc;
+    //  await helpers.uploadToCloudinary(
+    //   form.form.elements["img"].files
+    // );
+    const data = [
+      field["name"].value,
+      field["birthday"].value,
+      field["gender"].value,
+      field["number"].value,
+      field["email"].value,
+      field["reason"].value,
+      field["description"].value,
+      imgSrc,
+    ];
+
+    const newID = model.generatePattient(...data);
+    location.hash = newID;
+
+    form.hideForm();
+    form.form.reset();
+    form.removeImage();
   } else {
   }
+};
+
+const displayInfo = function () {
+  if (window.location.hash.slice(1) === "") return;
+  model.state.activeID = window.location.hash.slice(1);
+  let active = model.pattients.find((p) => p.id === model.state.activeID);
+  info.renderInfo(active);
 };
 
 const init = function () {
@@ -74,6 +94,7 @@ const init = function () {
   pattients.listenSelectedPattient(selectPattient);
   pages.listenButtons(changePage);
   form.listenSubmit(submitForm);
+  info.listenInfo(displayInfo);
 };
 
 init();

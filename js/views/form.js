@@ -1,21 +1,20 @@
 import View from "./View.js";
 
 class form extends View {
-  formLayout = document.querySelector(".form");
-  form = document.querySelector(".form_grid");
-  submitButton = document.querySelector(".form_submit");
-  cancelButton = document.querySelector(".form_cancel");
+  formLayout = document.querySelector(".form_pattient");
+  form = document.querySelector(".form_pattient_grid");
+  submitButton = document.querySelector(".form_pattient_submit");
+  cancelButton = document.querySelector(".form_pattient_cancel");
   backgroundBlur = document.querySelector(".background-blur");
   openButton = document.querySelector(".header_add_button");
-  inputImg = document.querySelector("input[type='file']");
-  display = document.querySelector(".form_img");
-  deleteButton = document.querySelector(".form_delete");
+  display = document.querySelector(".form_pattient_img");
+  deleteButton = document.querySelector(".form_pattient_delete");
 
   constructor() {
     super();
     this.listenCloseForm();
-    this.displayImage();
-    this.selectDelete();
+    this.listenDisplayImage();
+    this.listenSelectDelete();
   }
 
   listenOpenForm(f) {
@@ -26,19 +25,8 @@ class form extends View {
     this.formLayout.addEventListener("submit", f);
   }
 
-  selectDelete() {
-    this.deleteButton.addEventListener("click", this.deleteImage);
-  }
-
-  deleteImage() {
-    this.removeImage();
-    this.form.elements["img"].value = "";
-  }
-
-  removeImage() {
-    const imageToRemove = document.querySelector(".form_img_display");
-    if (imageToRemove === null) return;
-    imageToRemove.parentNode.removeChild(imageToRemove);
+  listenSelectDelete() {
+    this.deleteButton.addEventListener("click", this.deleteImage.bind(this));
   }
 
   async displayForm() {
@@ -54,14 +42,6 @@ class form extends View {
     this.cancelButton.addEventListener("click", this.hideForm.bind(this));
   }
 
-  displayImage() {
-    this.inputImg.addEventListener(
-      "change",
-      this.handleImage.bind(this),
-      false
-    );
-  }
-
   async hideForm() {
     await Promise.allSettled([
       this.fade(this.formLayout, true),
@@ -71,16 +51,24 @@ class form extends View {
     this.backgroundBlur.classList.toggle("hide");
   }
 
-  handleImage(files) {
+  listenDisplayImage() {
+    this.form.elements["img"].addEventListener(
+      "change",
+      this.handleImage.bind(this),
+      false
+    );
+  }
+
+  handleImage() {
     this.removeImage();
-    const display = document.querySelector(".form_img");
-    const file = this.inputImg.files[0];
+    const display = document.querySelector(".form_pattient_img");
+    const file = this.form.elements["img"].files[0];
 
     if (!file.type.startsWith("image/")) {
       return;
     }
     const img = document.createElement("img");
-    img.classList.add("form_img_display");
+    img.classList.add("form_pattient_img_display");
     img.file = file;
     display.appendChild(img);
 
@@ -91,6 +79,18 @@ class form extends View {
       };
     })(img);
     reader.readAsDataURL(file);
+    console.log(this.form.elements["img"].value);
+  }
+
+  removeImage() {
+    const imageToRemove = document.querySelector(".form_pattient_img_display");
+    if (imageToRemove === null) return;
+    imageToRemove.parentNode.removeChild(imageToRemove);
+  }
+
+  deleteImage() {
+    this.removeImage();
+    this.form.elements["img"].value = "";
   }
 }
 

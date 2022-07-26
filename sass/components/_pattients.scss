@@ -1,9 +1,10 @@
 .pattients {
   background-image: linear-gradient(
     to bottom,
-    rgba(var(--color-4), 0.3),
-    rgba(var(--color-8), 0.3)
+    rgb(var(--color-7)),
+    rgb(var(--color-8))
   );
+  // background-color: transparent;
   border-radius: 1rem;
   box-shadow: 0px 5px 2px rgb(var(--color-9));
   margin: 5px;
@@ -15,7 +16,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
   }
 
   &_arrow {
@@ -31,18 +31,19 @@
     width: 80%;
 
     &_button {
-      background-color: rgb(var(--color-8));
+      background-color: rgb(var(--color-7));
       width: 25px;
       height: 25px;
-      border: solid rgb(var(--color-4));
+      border: solid rgb(var(--color-8));
       border-radius: 35%;
+      box-shadow: 0px 1px 3px rgb(var(--color-9));
 
       &:hover {
         background-color: rgb(var(--color-6));
       }
 
       &_selected {
-        background-color: rgb(var(--color-4));
+        background-color: rgb(var(--color-5));
         width: 35px;
         height: 35px;
       }
@@ -61,25 +62,30 @@
 
     &_item {
       margin: 3px;
-      border: double rgb(var(--color-8));
-      background-color: rgb(var(--color-3));
+      // border: double rgb(var(--color-8));
+      background-image: linear-gradient(
+        to bottom,
+        rgb(var(--color-6)),
+        rgb(var(--color-7))
+      );
       border-radius: 20px;
       width: 100%;
       height: 16%;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: rgb(var(--color-8));
+      color: rgb(var(--color-2));
+      box-shadow: 0px 2px 3px rgb(var(--color-9));
 
       &_selected {
-        background-color: rgb(var(--color-8));
-        color: rgb(var(--color-3));
+        background-image: linear-gradient(
+          to bottom,
+          rgb(var(--color-7)),
+          rgb(var(--color-8))
+        );
+        color: rgb(var(--color-1));
       }
     }
-  }
-
-  &_name {
-    color: inherit;
   }
 
   &_image {

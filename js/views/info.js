@@ -10,8 +10,10 @@ class info extends View {
     this.buttons[2].addEventListener("click", remove);
   }
 
-  listenSelectedPattient(f) {
-    window.addEventListener("hashchange", f);
+  listenInfo(f) {
+    ["load", "hashchange"].forEach((ev) => {
+      window.addEventListener(ev, f);
+    });
   }
 
   renderInfo(pattient) {
@@ -33,11 +35,11 @@ class info extends View {
       new Date(new Date() - new Date(pattient.birthDay)) /
         (365 * 24 * 60 * 60 * 1000)
     )}</div></div>
-    <div class="info_flex"><div>${pattient.email} </div><div>${
-      pattient.number
-    }</div></div>
+    <div  ><div>${pattient.email}</div><div>${pattient.number}</div></div>
     <div>Main reason: <br>${pattient.reason}</div>
-    <div >Description: <br>${pattient.description}</div>
+    <div >Description: <div class="info_text">${
+      pattient.description
+    }</div></div>
   </div>
   <button class="info_edit info_btn">
     <img src="./img/gear.png" class="info_btn_image" alt="" />

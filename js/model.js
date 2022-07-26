@@ -1,3 +1,5 @@
+export let pattients = [];
+
 export const state = {
   activePattients: [],
   page: 1,
@@ -18,6 +20,7 @@ export const queryPattients = function (query) {
 
 export const generatePattient = function (
   name,
+  birthDay,
   gender,
   number,
   email,
@@ -25,23 +28,22 @@ export const generatePattient = function (
   description,
   src
 ) {
-  return {
+  const id = Math.random().toString(36).substr(2, 8);
+  pattients.unshift({
     name: name,
-    birthDay: new Date(
-      Math.floor(
-        Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
-          10 * 365 * 24 * 60 * 60 * 1000
-      )
-    ),
+    birthDay: birthDay,
     gender: gender,
     number: number,
     email: email,
     reason: reason,
     description: description,
     imgSrc: src,
-    id: Math.random().toString(36).substr(2, 8),
+    id: id,
     createdIn: new Date(),
-  };
+  });
+
+  updateLocal(pattients);
+  return id;
 };
 
 const updateLocal = function (pattients) {
@@ -113,6 +115,12 @@ const seedPattients = function (num) {
     let randomFirstName = Math.floor(Math.random() * 19 + 1);
     let randomLastName = Math.floor(Math.random() * 19 + 1);
     let name = firstNames[randomFirstName] + " " + lastNames[randomLastName];
+    let birthDay = new Date(
+      Math.floor(
+        Math.random() * (30 * 365 * 24 * 60 * 60 * 1000) +
+          10 * 365 * 24 * 60 * 60 * 1000
+      )
+    );
     let description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     let randomSrc;
@@ -134,22 +142,23 @@ const seedPattients = function (num) {
       gender = "female";
     }
 
-    pattients.unshift(
-      generatePattient(
-        name,
-        gender,
-        number,
-        email,
-        reason,
-        description,
-        randomSrc
-      )
+    generatePattient(
+      name,
+      birthDay,
+      gender,
+      number,
+      email,
+      reason,
+      description,
+      randomSrc
     );
   }
-  updateLocal(pattients);
-  console.log(pattients);
-  return pattients;
+  return JSON.parse(localStorage.getItem("pattients"));
 };
 
-export const pattients =
-  JSON.parse(localStorage.getItem("pattients")) ?? seedPattients(19);
+const loadPattients = function () {
+  if (JSON.parse(localStorage.getItem("pattients")) !== null)
+    pattients = JSON.parse(localStorage.getItem("pattients"));
+  else seedPattients(25);
+};
+loadPattients();
