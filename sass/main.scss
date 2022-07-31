@@ -2,10 +2,11 @@
 @use "base/base";
 @use "base/typography";
 @use "components/welcome";
-@use "components/pattients";
+@use "components/patients";
 @use "components/info";
 @use "components/appointments";
-@use "layout/form";
+@use "layout/form_appointment";
+@use "layout/form_patient";
 @use "layout/background";
 @use "layout/background-blurs";
 @use "layout/container";

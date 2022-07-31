@@ -1,4 +1,4 @@
-.pattients {
+.patients {
   background-image: linear-gradient(
     to bottom,
     rgb(var(--color-7)),
@@ -14,8 +14,8 @@
   &_navigation {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-content: flex-start;
   }
 
   &_arrow {
@@ -55,9 +55,8 @@
     height: 90%;
     display: flex;
     justify-content: center;
+    align-content: center;
     flex-direction: column;
-    align-items: center;
-    justify-items: center;
     list-style: none;
 
     &_item {

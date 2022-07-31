@@ -16,40 +16,53 @@ class info extends View {
     });
   }
 
-  renderInfo(pattient) {
-    this.clear();
+  renderMessage(a) {
+    this.clear(this.parentElement);
+    const message =
+      a === 2
+        ? "Select a patient"
+        : "<h4>Look for a patient</h4><h4>or upload a patient</h4>";
+    const markup = `<div class="info_look">
+    ${message}
+    </div>`;
+    this.parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  renderInfo(patient) {
+    this.clear(this.parentElement);
     const markup = `<figure class="info_figure">
     <div class="info_border">
-      <img
-        class="info_pattient_image"
-        src="${pattient.imgSrc}"
-      />
+    <img
+    class="info_patient_image"
+    src="${patient.imgSrc}"
+    />
     </div>
-    <figcaption class="info_name">${pattient.name}</figcaption>
-  </figure>
-
-  <div class="info_fields">
+    <figcaption class="info_name">${patient.name}</figcaption>
+    </figure>
+    
+    <div class="info_fields">
     <div class="info_flex"> <div>Gender: ${
-      pattient.gender
+      patient.gender
     }</div> <div>Age: ${Math.floor(
-      new Date(new Date() - new Date(pattient.birthDay)) /
+      new Date(new Date() - new Date(patient.birthDay)) /
         (365 * 24 * 60 * 60 * 1000)
     )}</div></div>
-    <div  ><div>${pattient.email}</div><div>${pattient.number}</div></div>
-    <div>Main reason: <br>${pattient.reason}</div>
-    <div >Description: <div class="info_text">${
-      pattient.description
-    }</div></div>
-  </div>
-  <button class="info_edit info_btn">
-    <img src="./img/gear.png" class="info_btn_image" alt="" />
-  </button>
-  <button class="info_remove info_btn">
-    <img src="./img/remove-user.png" class="info_btn_image" alt="" />
-  </button>
-  <button class="info_generate info_btn">
-    <img src="./img/agenda.png" class="info_btn_image" alt="" />
-  </button>`;
+      <div  ><div>${patient.email}</div><div>${patient.number}</div></div>
+      <div>Main reason: <br>${patient.reason}</div>
+      <div >Description: <div class="info_text">${
+        patient.description
+      }</div></div>
+      </div>
+      <button class="info_generate info_btn">
+      <img src="./img/agenda.png" class="info_btn_image" alt="" />
+      </button>
+      <button class="info_edit info_btn">
+      <img src="./img/gear.png" class="info_btn_image" alt="" />
+      </button>
+      <button class="info_remove info_btn">
+      <img src="./img/remove-user.png" class="info_btn_image" alt="" />
+      </button>
+      `;
     this.parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }

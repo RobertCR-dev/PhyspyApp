@@ -1,7 +1,7 @@
 import View from "./View.js";
 
 class pages extends View {
-  parentElement = document.querySelector(".pattients_navigation");
+  parentElement = document.querySelector(".patients_navigation");
   buttons;
 
   constructor() {
@@ -12,36 +12,36 @@ class pages extends View {
     this.parentElement.addEventListener("click", f);
   }
 
-  renderPages({ activePattients, page }) {
-    this.clear();
-    const pages = Math.ceil(activePattients.length / 6);
-    this.parentElement.innerHTML = `<div class="pattients_pages"></div>`;
-    this.buttons = document.querySelector(".pattients_pages");
+  renderPages({ activePatients, pageA }) {
+    this.clear(this.parentElement);
+    const pages = Math.ceil(activePatients.length / 6);
+    this.parentElement.innerHTML = `<div class="patients_pages"></div>`;
+    this.buttons = document.querySelector(".patients_pages");
     for (let i = 1; i <= pages; i++) {
-      this.renderButton(i, page);
+      this.renderButton(i, pageA);
     }
-    if (page !== pages) this.renderRight();
-    if (page !== 1) this.renderLeft();
+    if (pageA !== pages) this.renderRight();
+    if (pageA !== 1) this.renderLeft();
   }
 
   renderButton(i, page) {
-    const markUp = `<button data-number=${i} class="pattients_pages_button ${
-      i === page ? "pattients_pages_button pattients_pages_button_selected" : ""
+    const markUp = `<button data-number=${i} class="patients_pages_button ${
+      i === page ? "patients_pages_button patients_pages_button_selected" : ""
     }"></button>`;
     this.buttons.insertAdjacentHTML("beforeend", markUp);
   }
 
   renderRight() {
-    const markUp = `<button data-number="+1" ><img class="pattients_arrow" src="img/log-out.png" alt="" /></button>`;
+    const markUp = `<button data-number="+1" ><img class="patients_arrow" src="img/log-out.png" alt="" /></button>`;
     document
-      .querySelector(".pattients_navigation")
+      .querySelector(".patients_navigation")
       .insertAdjacentHTML("beforeend", markUp);
   }
 
   renderLeft() {
-    const markUp = `<button data-number="-1"><img class="pattients_arrow" src="img/log-in.png" alt="" /></button>`;
+    const markUp = `<button data-number="-1"><img class="patients_arrow" src="img/log-in.png" alt="" /></button>`;
     document
-      .querySelector(".pattients_navigation")
+      .querySelector(".patients_navigation")
       .insertAdjacentHTML("afterbegin", markUp);
   }
 }

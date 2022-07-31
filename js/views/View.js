@@ -1,8 +1,8 @@
 export default class View {
   parentElement;
 
-  clear() {
-    this.parentElement.innerHTML = "";
+  clear(element) {
+    element.innerHTML = "";
   }
 
   fade(element, out) {

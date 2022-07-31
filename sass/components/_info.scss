@@ -39,7 +39,7 @@
     box-shadow: 0px 2px 2px rgb(var(--color-9));
   }
 
-  &_pattient_image {
+  &_patient_image {
     width: 120px;
     height: 120px;
     border-radius: 20px;
@@ -51,8 +51,8 @@
     color: rgb(var(--color-1));
     background-image: linear-gradient(
       to bottom,
-      rgb(var(--color-7)),
-      rgb(var(--color-8))
+      rgb(var(--color-6)),
+      rgb(var(--color-7))
     );
     border-radius: 10px;
     box-shadow: 0px 1px 2px rgb(var(--color-9));
@@ -95,9 +95,8 @@
 
   &_look {
     grid-area: 1/1/4/4;
-    background: rgb(var(--color-3));
     border-radius: 10px;
-    color: rgb(var(--color-8));
+    color: rgb(var(--color-1));
     width: 80%;
     height: 60%;
     display: flex;

@@ -1,210 +1,253 @@
 <html>
-  <head>
-    <title>Physpy</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script defer src="./js/controller.js" type="module"></script>
-  </head>
-  <body>
-    <div class="background"></div>
-    <div class="container">
-      <header class="header">
-        <div class="header_flex">
-          <img src="img/massage.png" alt="" class="header_icon" />
-          <h1>Physpy</h1>
-        </div>
-        <div class="header_options">
-          <button class="header_add_button">
-            <img src="img/add-user.png" alt="" class="header_add_image" />
-          </button>
-          <form class="header_search">
-            <input
-              type="text"
-              name="patientSearch"
-              placeholder="Look for a patient"
-              class="header_search_input"
-            />
-            <label for="patientSearch"> </label>
-            <button class="header_search_button">
-              <img
-                src="img/search.png"
-                alt="SearchIcon"
-                class="header_search_icon"
-                id="search"
-              />
-            </button>
-          </form>
-        </div>
-      </header>
-      <div class="pattients">
-        <ul class="pattients_result"></ul>
-        <div class="pattients_navigation">
-          <div class="pattients_pages"></div>
-        </div>
+<head>
+  <title>Physpy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,500;1,700&display=swap"
+  rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script defer src="./js/controller.js" type="module"></script>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <header class="header">
+      <div class="header_flex">
+        <img src="img/massage.png" alt="" class="header_icon" />
+        <h1>Physpy</h1>
       </div>
-      <div class="info">
-        <div class="info_data">
-          <div class="info_look">
-            <h4>Look for a pattient</h4>
-            <h4>or upload a pattient</h4>
-          </div>
-        </div>
-        <div class="appointments">
-          <ul class="appointments_dates">
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el appointments_dates_el_selected">
-              23/12/1293
-            </li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-            <li class="appointments_dates_el">23/12/1293</li>
-          </ul>
-          <div class="appointments_description">
-            <div>scoliosis diagnosed</div>
-          </div>
-          <div class="appointments_files">
-            <div class="appointments_files_left-arrow">&#x1F844</div>
-            <img
-               class="appointments_files_image" src="./img/diagnostico-escoliosis.jpg"
-               alt=""
-            />
-            <div class="appointments_files-right-arrow">&#x1F846</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="background-blur"></div>
-    <div class="welcome">
-      <div class="welcome_container">
-        <div class="welcome_image">
-          <img class="welcome_icon" src="./img/massage.png" />
-        </div>
-        <div class="welcome_text">
-          <h1>Physpy</h1>
-          <h3>The app that helps physiotherapists.</h3>
-          <h4>
-            It uses your local storage, therefore <br />any deleted file may
-            effect the registry.
-          </h4>
-        </div>
-      </div>
-      <button class="welcome_button button-popUp" type="button">OK!</button>
-    </div>
-    <div class="form_pattient hide">
-      <button class="form_pattient_cancel button-popUp">Cancel</button>
-      <form class="form_pattient_grid" id="form">
-        <div class="form_pattient_name">
-          <label for="name" class="form_pattient_label">Name </label
-          ><input
-            id="name"
-            type="text"
-            class="form_pattient_input"
-            name="name"
-            required
-          />
-        </div>
-        <div class="form_pattient_birthday">
-          <label for="birthday" class="form_pattient_label">Birthday</label
-          ><input
-            id="birthday"
-            type="date"
-            class="form_pattient_input"
-            name="birthday"
-            required
-          />
-        </div>
-        <div class="form_pattient_gender">
-          <label for="male" class="form_label">Male</label>
-          <input
-            type="radio"
-            id="male"
-            class="form_pattient_input"
-            value="male"
-            name="gender"
-            required
-          />
-          <label for="female" class="form_pattient_label">Female</label>
-          <input
-            type="radio"
-            id="female"
-            class="form_pattient_input"
-            value="female"
-            name="gender"
-            required
-          />
-        </div>
-        <div class="form_pattient_phone">
-          <label for="number" class="form_pattient_label">Phone Number</label
-          ><input
-            id="number"
-            class="form_pattient_input"
-            type="text"
-            name="number"
-            required
-          />
-        </div>
-        <div class="form_pattient_email">
-          <label for="email" class="form_pattient_label">E-mail</label
-          ><input
-            id="email"
-            class="form_pattient_input"
-            type="email"
-            name="email"
-            required
-          />
-        </div>
-
-        <div class="form_pattient_separator form_pattient_separator_1"></div>
-        <div class="form_pattient_reason">
-          <label for="reason" class="form_pattient_label">Main Reason</label
-          ><input
-            id="reason"
-            class="form_pattient_input"
-            type="text"
-            name="reason"
-            required
-          />
-        </div>
-        <div class="form_pattient_description">
-          <label for="description" class="form_pattient_label">Description</label
-          ><textarea
-            id="description"
-            class="form_pattient_input form_pattient_input_text-area"
-            rows="16"
-            name="description"
-            required
-          ></textarea>
-        </div>
-        <div class="form_pattient_separator form_pattient_separator_2"></div>
-        <button class="form_pattient_delete button-popUp" type="button">
-          Delete image
+      <div class="header_options">
+        <button class="header_add_button">
+          <img src="img/add-user.png" alt="" class="header_add_image" />
         </button>
-        <div class="form_pattient_img"></div>
-        <div class="form_pattient_upload">
-          <label for="img" class="form_pattient_label">Upload a portrait image</label>
-          <input class="form_pattient_input" type="file" name="img" />
+        <form class="header_search">
+          <input
+          type="text"
+          name="patientSearch"
+          placeholder="Look for a patient"
+          class="header_search_input"
+          />
+          <label for="patientSearch"> </label>
+          <button class="header_search_button">
+            <img
+            src="img/search.png"
+            alt="SearchIcon"
+            class="header_search_icon"
+            id="search"
+            />
+          </button>
+        </form>
+      </div>
+    </header>
+    <div class="patients">
+      <ul class="patients_result"></ul>
+      <div class="patients_navigation">
+        <div class="patients_pages"></div>
+      </div>
+    </div>
+    <div class="info">
+      <div class="info_data">
+        <div class="info_look">
+          <h4>Look for a patient</h4>
+          <h4>or upload a patient</h4>
         </div>
-        <button class="form_pattient_submit button-popUp" type="submit">Save</button>
-      </form>
-    </div>
-    <div class="form_pattient_appointment hide">
-      <form class="form_pattient_appointment_grid"action="">
-        
-      </form>
-    </div>
-  </body>
-</html>
+      </div>
+      <div class="appointments">
+        <!-- <ul class="appointments_dates">
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el appointments_dates_el_selected">
+            23/12/1293
+          </li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+          <li class="appointments_dates_el">23/12/1293</li>
+        </ul>
+        <div class="appointments_description">
+          <div>scoliosis diagnosed</div>
+        </div>
+        <div class="appointments_files">
+          <div class="appointments_files_left-arrow">&#x1F844</div>
+          <img
+          class="appointments_files_image" src="./img/diagnostico-escoliosis.jpg"
+          alt=""
+          />
+          <div class="appointments_files-right-arrow">&#x1F846</div>  -->
+          <!-- <div class="appointments_message"">
+            This patient has no appoointments yet <br> create one
+          </div> -->
+          <!-- <input id="arrow" type="checkbox" class="appointments_files_checkbox">
+            <label for="arrow" class="appointments_files_left-arrow">&#x1F844</label> -->
+            <!-- <input id="arrow" type="checkbox" class="appointments_files_checkbox">
+              <label for="arrow" class="appointments_files_right-arrow">&#x1F846</label> -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="background-blur"></div>
+      <div class="welcome">
+        <div class="welcome_container">
+          <div class="welcome_image">
+            <img class="welcome_icon" src="./img/massage.png" />
+          </div>
+          <div class="welcome_text">
+            <h1>Physpy</h1>
+            <h3>The app that helps physiotherapists.</h3>
+            <h4>
+              It uses your local storage, therefore <br />any deleted file may
+              effect the registry.
+            </h4>
+          </div>
+        </div>
+        <button class="welcome_button button-popUp" type="button">OK!</button>
+      </div>
+      <div class="form_patient hide">
+        <button class="form_patient_cancel button-popUp">Cancel</button>
+        <form class="form_patient_grid" id="form">
+          <div class="form_patient_name">
+            <label for="name" class="form_patient_label">Name</label
+              ><input
+              id="name"
+              type="text"
+              class="form_patient_input"
+              name="name"
+              required
+              />
+            </div>
+            <div class="form_patient_birthDay">
+              <label for="birthDay" class="form_patient_label">Birthday</label
+                ><input
+                id="birthDay"
+                type="date"
+                class="form_patient_input"
+                name="birthDay"
+                required
+                />
+              </div>
+              <div class="form_patient_gender">
+                <label for="male" class="form_label">Male</label>
+                <input
+                type="radio"
+                id="male"
+                class="form_patient_input"
+                value="male"
+                name="gender"
+                required
+                />
+                <label for="female" class="form_patient_label">Female</label>
+                <input
+                type="radio"
+                id="female"
+                class="form_patient_input"
+                value="female"
+                name="gender"
+                required
+                />
+              </div>
+              <div class="form_patient_phone">
+                <label for="number" class="form_patient_label">Phone Number</label
+                  ><input
+                  id="number"
+                  class="form_patient_input"
+                  type="text"
+                  name="number"
+                  required
+                  />
+                </div>
+                <div class="form_patient_email">
+                  <label for="email" class="form_patient_label">E-mail</label
+                    ><input
+                    id="email"
+                    class="form_patient_input"
+                    type="email"
+                    name="email"
+                    required
+                    />
+                  </div>
+                  <div class="form_patient_separator form_patient_separator_1"></div>
+                  <div class="form_patient_reason">
+                    <label for="reason" class="form_patient_label">Main Reason</label
+                      ><input
+                      id="reason"
+                      class="form_patient_input"
+                      type="text"
+                      name="reason"
+                      required
+                      />
+                    </div>
+                    <div class="form_patient_description">
+                      <label for="description" class="form_patient_label">Description</label
+                        ><textarea
+                        id="description"
+                        class="form_patient_input form_patient_input_text-area"
+                        rows="16"
+                        name="description"
+                        required
+                        ></textarea>
+                      </div>
+                      <div class="form_patient_separator form_patient_separator_2"></div>
+                      <button class="form_patient_delete button-popUp" type="button">
+                        Delete image
+                      </button>
+                      <div class="form_patient_img"></div>
+                      <div class="form_patient_upload">
+                        <label for="img" class="form_patient_label">Upload a portrait image</label>
+                        <input class="form_patient_input" type="file" name="img" />
+                      </div>
+                      <button class="form_patient_submit button-popUp" type="submit">Save</button>
+                    </form>
+                  </div>
+                  <div class="form_appointment hide">
+                    <button class="form_appointment_cancel button-popUp">Cancel</button>
+                    <form class="form_appointment_grid"action="">
+                      <div class="form_appointment_date">
+                        <label for="date" class="form_appointment_label"> Date </label>
+                        <input type="date" name="date" class="form_appointment_input">
+                      </div>
+                      <div class="form_appointment_condition">
+                        <label for="condition" class="form_appointment_label"> Condition </label>
+                        <input type="text" name="condition" class="form_appointment_input">
+                      </div>
+                      <div class="form_appointment_prescription">
+                        <label for="prescription" class="form_appointment_label"> Prescription </label>
+                        <textarea
+                        id="prescription"
+                        class="form_appointment_input form_appointment_input_text-area"
+                        rows="5"
+                        name="prescription"
+                        required
+                        ></textarea>
+                      </div>
+                      <div class="form_appointment_comments">
+                        <label for="comments" class="form_appointment_label"> Comments </label>
+                        <textarea
+                        id="comments"
+                        class="form_appointment_input form_appointment_input_text-area"
+                        rows="5"
+                        name="comments"
+                        required
+                        ></textarea>
+                      </div>
+                      <div class="form_appointment_separator"></div>
+                      <button class="form_appointment_delete button-popUp" type="button">Delete images</button>
+                      <div class="form_appointment_img"></div>
+                      <div class="form_appointment_files">
+                        <label for="files" class="form_appointment_label"> Files </label>
+                        <input type="file" name="files" class="form_appointment_input" multiple>
+                      </div>
+                      <button class="form_appointment_submit button-popUp" type="submit">Save</button>
+                    </form>
+                  </div>
+                </body>
+                </html>

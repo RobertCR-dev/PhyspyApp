@@ -1,24 +1,27 @@
-export let pattients = [];
+export let patients = [];
 
 export const state = {
-  activePattients: [],
-  page: 1,
-  activeID: null,
+  activePatients: [],
+  activeA: null,
+  activeB: 0,
+  activeC: 0,
+  pageA: 1,
+  pageB: 1,
 };
 
-export const queryPattients = function (query) {
-  state.activePattients = [];
+export const queryPatients = function (query) {
+  state.activePatients = [];
   if (query === "") {
-    state.activePattients = [...pattients];
+    state.activePatients = [...patients];
     return;
   }
-  pattients.forEach((e) => {
+  patients.forEach((e) => {
     if (e.name.toLowerCase().includes(query.toLowerCase()))
-      state.activePattients.unshift(e);
+      state.activePatients.unshift(e);
   });
 };
 
-export const generatePattient = function (
+export const generatePatient = function (
   name,
   birthDay,
   gender,
@@ -29,7 +32,7 @@ export const generatePattient = function (
   src
 ) {
   const id = Math.random().toString(36).substr(2, 8);
-  pattients.unshift({
+  patients.unshift({
     name: name,
     birthDay: birthDay,
     gender: gender,
@@ -38,21 +41,54 @@ export const generatePattient = function (
     reason: reason,
     description: description,
     imgSrc: src,
+    appointments: [],
     id: id,
     createdIn: new Date(),
   });
 
-  updateLocal(pattients);
+  updateLocal();
   return id;
 };
 
-const updateLocal = function (pattients) {
-  localStorage.setItem("pattients", JSON.stringify(pattients));
+export const editPatient = function (...updatedData) {
+  console.log(updatedData);
+  const index = patients.indexOf(state.activeA);
+  patients[index].name = updatedData[0];
+  patients[index].birthDay = updatedData[1];
+  patients[index].gender = updatedData[2];
+  patients[index].number = updatedData[3];
+  patients[index].email = updatedData[4];
+  patients[index].reason = updatedData[5];
+  patients[index].description = updatedData[6];
+  patients[index].imgSrc = updatedData[7];
+  updateLocal();
+  console.log(state.activeA);
 };
 
-const seedPattients = function (num) {
-  console.log("seeding random pattients");
-  const pattients = [];
+export const addAppointment = function (data) {
+  state.activeA.appointments.unshift({
+    date: data[0],
+    condition: data[1],
+    prescription: data[2],
+    comments: data[3],
+    files: data[4],
+  });
+  updateLocal();
+};
+
+export const removePatient = function () {
+  const index = patients.indexOf(state.activeA);
+  patients.splice(index, 1);
+  updateLocal();
+};
+
+const updateLocal = function () {
+  console.log(patients);
+  localStorage.setItem("patients", JSON.stringify(patients));
+};
+
+const seedPatients = function (num) {
+  const patients = [];
   const firstNames = [
     "James",
     "Robert",
@@ -142,7 +178,7 @@ const seedPattients = function (num) {
       gender = "female";
     }
 
-    generatePattient(
+    generatePatient(
       name,
       birthDay,
       gender,
@@ -153,12 +189,12 @@ const seedPattients = function (num) {
       randomSrc
     );
   }
-  return JSON.parse(localStorage.getItem("pattients"));
+  return JSON.parse(localStorage.getItem("patients"));
 };
 
-const loadPattients = function () {
-  if (JSON.parse(localStorage.getItem("pattients")) !== null)
-    pattients = JSON.parse(localStorage.getItem("pattients"));
-  else seedPattients(25);
+const loadPatients = function () {
+  if (JSON.parse(localStorage.getItem("patients")) !== null)
+    patients = JSON.parse(localStorage.getItem("patients"));
+  else seedPatients(18);
 };
-loadPattients();
+loadPatients();
